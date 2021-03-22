@@ -1,11 +1,7 @@
-output "vpc_arn" {
-  value = aws_vpc.mainVPC.arn
+output "lb_id" {
+  value = aws_lb.front_lb.id
 }
 
-output "vpc_id" {
-  value = aws_vpc.mainVPC.id
-}
-
-output "vpc_cidr_block" {
-  value = aws_vpc.mainVPC.cidr_block
+output "lb_arn" {
+  value = aws_lb.front_lb.arn
 }

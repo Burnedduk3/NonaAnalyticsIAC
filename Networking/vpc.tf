@@ -20,3 +20,11 @@ resource "aws_subnet" "subnet" {
         "Name" = "${terraform.workspace}-${var.subnets[count.index].name}"  
     }
 }
+
+resource "aws_internet_gateway" "internet_gateway" {
+  vpc_id = aws_vpc.mainVPC.id
+
+  tags = {
+    "Name" = "${terraform.workspace}-internet-gateway"  
+  }
+}

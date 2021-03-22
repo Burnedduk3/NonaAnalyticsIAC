@@ -1,13 +1,5 @@
-variable "cidr_block" {}
+variable "loadBalancerName" {}
 
-variable "enable_dns_support" {}
+variable "VPC_id" {}
 
-variable "enable_dns_hostnames" {}
-
-variable "subnets"{
-    type = list(object({
-        cidr_block = string 
-        availability_zone = string
-        name = string
-    }))
-}
+variable "BackloadBalancerName" {}

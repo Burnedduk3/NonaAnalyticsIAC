@@ -31,3 +31,11 @@ module "vpc" {
     }
   ]
 }
+
+module "front_load_balancer" {
+  source = "./LoadBalancing/"
+  loadBalancerName = "Front-load-balancer"
+  BackloadBalancerName = "Back-end-balancer"
+  VPC_id = module.vpc.vpc_id
+  depends_on = [module.vpc]
+}

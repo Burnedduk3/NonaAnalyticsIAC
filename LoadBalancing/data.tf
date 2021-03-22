@@ -1,27 +1,27 @@
 data "aws_subnet" "front1" {
   filter {
     name   = "tag:Name"
-    values = ["front-end-a"]
+    values = ["${terraform.workspace}-front-end-a"]
   }
 }
 
 data "aws_subnet" "front2" {
   filter {
     name   = "tag:Name"
-    values = ["front-end-b"]
+    values = ["${terraform.workspace}-front-end-b"]
   }
 }
 
 data "aws_subnet" "back1" {
   filter {
     name   = "tag:Name"
-    values = ["back-end-a"]
+    values = ["${terraform.workspace}-back-end-a"]
   }
 }
 
 data "aws_subnet" "back2" {
   filter {
     name   = "tag:Name"
-    values = ["back-end-b"]
+    values = ["${terraform.workspace}-back-end-b"]
   }
 }
