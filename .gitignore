@@ -2,3 +2,6 @@
 
 .terraform/modules
 .terraform/providers
+
+*/secrets
+*.tfvars

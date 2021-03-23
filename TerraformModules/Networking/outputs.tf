@@ -9,3 +9,7 @@ output "vpc_id" {
 output "vpc_cidr_block" {
   value = aws_vpc.mainVPC.cidr_block
 }
+
+output "aws_db_subnet" {
+  value = aws_db_subnet_group.db_subnet.id
+}
