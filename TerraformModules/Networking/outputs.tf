@@ -13,3 +13,7 @@ output "vpc_cidr_block" {
 output "aws_db_subnet" {
   value = aws_db_subnet_group.db_subnet.id
 }
+
+output "VPC_Subnets_id" {
+  value = aws_subnet.subnet[*].id
+}

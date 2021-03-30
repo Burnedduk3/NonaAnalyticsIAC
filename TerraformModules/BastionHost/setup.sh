@@ -1,7 +1,11 @@
 #!/bin/bash
 # for bastionHost
-sudo apt-get update
-sudo apt-get upgrade -y
+echo "################################### INSTALLING Salt ###################################"
+curl -L https://bootstrap.saltstack.com -o install-salt.sh
+sudo sh install-salt.sh -M -P git v3000.3
+sudo mkdir /srv/salt
+
+
 echo "################################### INSTALLING JENKINS ###################################"
 sudo apt update
 sudo apt-get install default-jre default-jdk -y
@@ -22,14 +26,3 @@ sudo usermod -aG docker ${USER}
 newgrp docker
 sudo gpasswd -a jenkins docker
 sudo systemctl restart jenkins
-
-#install git
-sudo apt install git -y
-
-# install salt
-echo "################################### INSTALLING Salt ###################################"
-curl -L https://bootstrap.saltstack.com -o install-salt.sh
-sudo sh install-salt.sh -M -P git v3000.3
-salt --version
-sudo mkdir /srv/salt
-cd /srv/salt/

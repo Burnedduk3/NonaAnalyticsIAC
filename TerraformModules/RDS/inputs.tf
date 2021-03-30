@@ -9,3 +9,9 @@ variable "password" {
 }
 
 variable "db_subnet"{}
+
+variable "vpc_id" {}
+
+variable "ingress_cidr" {
+    type = list(string)
+}
