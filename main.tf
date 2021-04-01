@@ -48,19 +48,18 @@ module "vpc" {
     }
   ]
 }
+module "BastionHost" {
+  source     = "./TerraformModules/BastionHost"
+  vpc_id     = module.vpc.vpc_id
+  depends_on = [module.vpc]
+}
 
 module "front_load_balancer" {
   source               = "./TerraformModules/LoadBalancing/"
   loadBalancerName     = "Front-load-balancer"
   BackloadBalancerName = "Back-end-balancer"
   VPC_id               = module.vpc.vpc_id
-  depends_on           = [module.vpc]
-}
-
-module "BastionHost" {
-  source     = "./TerraformModules/BastionHost"
-  vpc_id     = module.vpc.vpc_id
-  depends_on = [module.vpc]
+  depends_on           = [module.BastionHost]
 }
 
 module "Database" {
@@ -70,7 +69,7 @@ module "Database" {
   db_subnet  = module.vpc.aws_db_subnet
   vpc_id = module.vpc.vpc_id
   ingress_cidr = ["10.0.2.0/24", "10.0.3.0/24"]
-  depends_on = [module.BastionHost]
+  depends_on = [module.vpc]
 }
 
 module "Project_ASG" {
